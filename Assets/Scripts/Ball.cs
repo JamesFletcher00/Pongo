@@ -8,6 +8,7 @@ public class Ball : MonoBehaviour
     public float minY = -3;
     public float ballSpeed = 5f;
     public bool isLaunched = false;
+    public AudioSource ballSound;
 
     void Start()
     {
@@ -15,6 +16,10 @@ public class Ball : MonoBehaviour
         Invoke("LaunchBall", launchTimer);
     }
 
+    void OnCollisionEnter2D(Collision2D collider)
+    {
+        ballSound.Play();
+    }
     void LaunchBall()
     {
         if (isLaunched) return;
@@ -27,10 +32,14 @@ public class Ball : MonoBehaviour
 
         isLaunched = true;
     }
-
-    // Update is called once per frame
-    void Update()
+    
+    public void ResetBall(Vector3 position)
     {
-        
+        isLaunched = false;
+        rb.linearVelocity = Vector2.zero;
+        transform.position = position;
+
+        Invoke("LaunchBall", launchTimer * 2);
     }
+
 }
