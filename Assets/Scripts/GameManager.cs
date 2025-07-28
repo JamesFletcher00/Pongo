@@ -17,7 +17,8 @@ public class GameManager : MonoBehaviour
     private bool isGameEnded = false;
 
     [Header("Ball")]
-    public GameObject ball;
+    public Ball ball;
+    public GameObject ballPrefab;
 
     void Update()
     {
@@ -33,6 +34,7 @@ public class GameManager : MonoBehaviour
 
         if (player == "Player2")
         {
+            ball.ballSpeed = 9f;
             player1Score++;
             UpdateScoreUI(player1ScoreText, player1Score);
             if (player1Score >= winningScore)
@@ -42,6 +44,7 @@ public class GameManager : MonoBehaviour
         }
         else if (player == "Player1")
         {
+            ball.ballSpeed = 9f;
             player2Score++;
             UpdateScoreUI(player2ScoreText, player2Score);
             if (player2Score >= winningScore)
@@ -57,7 +60,7 @@ public class GameManager : MonoBehaviour
     private void EndGame(string message)
     {
         isGameEnded = true;
-        Destroy(ball);
+        Destroy(ballPrefab);
 
         winText.text = message;
         winText.gameObject.SetActive(true);
