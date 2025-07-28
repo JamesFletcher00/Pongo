@@ -1,5 +1,6 @@
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -15,13 +16,14 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI replayText;
     private bool isGameEnded = false;
 
+    [Header("Ball")]
+    public GameObject ball;
+
     void Update()
     {
         if (isGameEnded && Input.GetKeyDown(KeyCode.Space))
         {
-            isGameEnded = false;
-            player1Score = 0;
-            player2Score = 0;   
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         }
     }
 
@@ -29,7 +31,7 @@ public class GameManager : MonoBehaviour
     {
         if (isGameEnded) return;
 
-        if (player == "Player1")
+        if (player == "Player2")
         {
             player1Score++;
             UpdateScoreUI(player1ScoreText, player1Score);
@@ -38,7 +40,7 @@ public class GameManager : MonoBehaviour
                 EndGame("Player 1 Wins");
             }
         }
-        else if (player == "Player2")
+        else if (player == "Player1")
         {
             player2Score++;
             UpdateScoreUI(player2ScoreText, player2Score);
@@ -55,6 +57,7 @@ public class GameManager : MonoBehaviour
     private void EndGame(string message)
     {
         isGameEnded = true;
+        Destroy(ball);
 
         winText.text = message;
         winText.gameObject.SetActive(true);
