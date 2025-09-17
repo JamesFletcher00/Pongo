@@ -9,7 +9,7 @@ public class GoalLightsFlashing : MonoBehaviour
     public Color defaultColor = Color.white;
 
     public float pulseDuration = 0.3f;
-    public float pulseCount = 3f;
+    public float pulseCount = 4f;
 
     public void Flash(Color flashColor)
     {
