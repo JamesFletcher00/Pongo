@@ -1780,7 +1780,7 @@ AudioSource:
   m_audioClip: {fileID: 8300000, guid: ad6f33fdc15992348b93260b053760bd, type: 3}
   m_Resource: {fileID: 8300000, guid: ad6f33fdc15992348b93260b053760bd, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.458
   m_Pitch: 2.57
   Loop: 0
   Mute: 0
@@ -2819,7 +2819,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 0f3a149849ae8d9489302aaf8a8281ac, type: 2}
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
